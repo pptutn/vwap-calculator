@@ -1,6 +1,8 @@
 package org.tranp;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.tranp.fx.CurrencyPair;
 
 import java.util.Random;
@@ -9,6 +11,7 @@ import java.util.Random;
  * Generates a Market Data Entry for a given symbol
  */
 public class MarketDataGenerator {
+    private static final Logger LOG = LogManager.getLogger();
     private static final int MIN_QTY = 10_000;
     private static final int MAX_QTY = 1_000_000;
 
@@ -30,6 +33,8 @@ public class MarketDataGenerator {
      * @return MarketDataEntry as string in the following format: "time|sym|px|qty"
      */
     public String generateMarketDataEntryForSymbol(final CurrencyPair symbol) {
+        sb.setLength(0);
+
         final double meanPrice = pricingConfig.meanPriceForSymbol(symbol);
         final double stdDev = pricingConfig.getStd(); // Fetch standard deviation
         final long generatedQty = generateRandomQty();
@@ -47,7 +52,7 @@ public class MarketDataGenerator {
      * @return a generated px
      */
     private double generatePrice(final double mean, final double stdDev) {
-        return mean + stdDev * random.nextGaussian();
+        return mean + (mean * stdDev * random.nextGaussian());
     }
 
     /**

@@ -1,6 +1,7 @@
 package org.tranp.vwap;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.tranp.data.MutablePriceTick;
 import org.tranp.data.PriceTick;
 import org.tranp.data.PriceTickPool;
@@ -15,7 +16,7 @@ import java.util.function.Consumer;
  */
 public class VwapCalculator implements Consumer<PriceTick> {
     private static final int TIME_WINDOW_MILLIS = 5000;
-    private static final Logger LOG = Logger.getLogger(VwapCalculator.class);
+    private static final Logger LOG = LogManager.getLogger(VwapCalculator.class);
 
     private final PriceTickPool pool;
     private final Queue<MutablePriceTick> queue;
@@ -29,6 +30,7 @@ public class VwapCalculator implements Consumer<PriceTick> {
     }
 
     public void accept(final PriceTick priceTick) {
+        LOG.debug("Accepting Tick {}", priceTick);
         this.sumQtyTimesPrice += priceTick.price() * priceTick.qty();
         this.sumQty += priceTick.qty();
 

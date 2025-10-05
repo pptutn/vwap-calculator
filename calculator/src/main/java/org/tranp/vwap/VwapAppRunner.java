@@ -1,6 +1,8 @@
 package org.tranp.vwap;
 
 import jakarta.annotation.PostConstruct;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 import org.tranp.subscription.MarketDataReceiver;
 import org.tranp.data.PriceTickConsumer;
@@ -12,6 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 @Component
 public class VwapAppRunner {
+    private static final Logger LOG = LogManager.getLogger(VwapAppRunner.class);
     private final MarketDataReceiver marketDataReceiver;
     private final PriceTickConsumer priceTickConsumer;
     private final VwapCalculator vwapCalculator;
@@ -34,11 +37,13 @@ public class VwapAppRunner {
 
         final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
         scheduler.scheduleAtFixedRate(() -> {
-            System.out.println("VWAP: " + vwapCalculator.vwapDetail());
+//            System.out.println("VWAP: " + vwapCalculator.vwapDetail());
+            LOG.info("VWAP: {} ", vwapCalculator.vwapDetail());
         }, 0, 5, TimeUnit.SECONDS);
 
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            System.out.println("---- STOPPING ----");
+            LOG.info("---- STOPPING ----");
+//            System.out.println("---- STOPPING ----");
             marketDataReceiver.stop();
             priceTickConsumer.stop();
             scheduler.shutdownNow();
