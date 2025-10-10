@@ -2,13 +2,15 @@ package org.tranp.config;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
-import java.util.function.Supplier;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import org.tranp.MarketDataGenerator;
-import org.tranp.data.*;
+import org.tranp.data.MutablePriceTick;
+import org.tranp.data.PriceTickPool;
+import org.tranp.data.PriceTickConsumer;
+import org.tranp.data.RingBuffer;
 import org.tranp.subscription.MarketDataReceiver;
 import org.tranp.vwap.VwapAppRunner;
 import org.tranp.vwap.VwapCalculator;

@@ -10,4 +10,13 @@
             <AppenderRef ref="Console"/>
         </Root>
     </Loggers>
+    <Loggers>
+        <Logger name="org.tranp.generator" level="debug" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+
 </Configuration>

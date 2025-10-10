@@ -11,7 +11,7 @@ import java.util.Random;
  * Generates a Market Data Entry for a given symbol
  */
 public class MarketDataGenerator {
-    private static final Logger LOG = LogManager.getLogger();
+    private static final Logger LOG = LogManager.getLogger(MarketDataGenerator.class);
     private static final int MIN_QTY = 10_000;
     private static final int MAX_QTY = 1_000_000;
 
