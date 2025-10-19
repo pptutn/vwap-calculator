@@ -4,4 +4,4 @@
 
 `./bin/start.sh`
 
-See 5 minute VWAP in /logs/app.log
+See 5 minute VWAP in /logs/vwap-calculator.log

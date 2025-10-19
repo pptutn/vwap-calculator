@@ -13,7 +13,7 @@ import java.util.Random;
 public class MarketDataReceiver implements Runnable {
     private final Random random = new Random();
     private final MarketDataGenerator marketDataGenerator;
-    private final RingBuffer<MutablePriceTick > buffer;
+    private final RingBuffer<MutablePriceTick> buffer;
 
     private volatile boolean running = true;
 

@@ -74,7 +74,7 @@
                         </manifest>
                     </archive>
                     <descriptors>
-                        <descriptor>src/assembly/assembly.xml</descriptor>  <!-- Use your custom assembly here -->
+                        <descriptor>../assembly/assembly.xml</descriptor>  <!-- Use your custom assembly here -->
                     </descriptors>
 <!--                    <descriptorRefs>-->
 <!--                        <descriptorRef>jar-with-dependencies</descriptorRef>-->

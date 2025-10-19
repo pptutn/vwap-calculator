@@ -2,7 +2,8 @@
 <Configuration status="WARN">
     <Properties>
 <!--        <Property name="logDir">logs</Property>  &lt;!&ndash; relative or absolute path &ndash;&gt;-->
-        <Property name="logDir">${sys:logDir}</Property>
+<!--        <Property name="logDir">${sys:logDir}</Property>-->
+        <Property name="logDir">${sys:logDir:-logs}</Property>
     </Properties>
 
 
@@ -10,7 +11,7 @@
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </Console>
-        <File name="LogFile" fileName="${logDir}/app.log" append="true">
+        <File name="LogFile" fileName="${logDir}/vwap-calculator.log" append="true">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger - %msg%n"/>
         </File>
     </Appenders>
