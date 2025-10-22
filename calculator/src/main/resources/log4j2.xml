@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
     <Properties>
-<!--        <Property name="logDir">logs</Property>  &lt;!&ndash; relative or absolute path &ndash;&gt;-->
-<!--        <Property name="logDir">${sys:logDir}</Property>-->
         <Property name="logDir">${sys:logDir:-logs}</Property>
     </Properties>
 

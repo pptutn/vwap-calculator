@@ -13,7 +13,10 @@ public class PriceTickPool {
     }
 
     public MutablePriceTick borrow() {
-        return pool.poll();
+//      return pool.poll();
+      // garbagy
+      final MutablePriceTick tick = pool.poll();
+      return tick != null ? tick : new MutablePriceTick();
     }
 
     public void release(final MutablePriceTick tick) {

@@ -21,29 +21,15 @@ public class VwapState {
 
   @Setup(Level.Trial)
   public void setup() {
-    PriceTickPool pool = new PriceTickPool(2048);
+    PriceTickPool pool = new PriceTickPool(100_000_000);
     Queue<MutablePriceTick> queue = new ArrayDeque<>();
     calculator = new VwapCalculator(pool, queue);
     tick = new MutablePriceTick();
-//    tick.price(100);  // manually assign dummy values
-//    tick.qty(1_000_000);
-//    tick.timestamp(System.currentTimeMillis());
     LOG.info("Tick before {}", tick);
     MarketDataGenerator gen = new MarketDataGenerator();
     Parser.parseEntry(gen.generateMarketDataEntryForSymbol(CurrencyPair.AUDUSD), tick);
     LOG.info("Tick after {}", tick);
   }
-//  @Setup(Level.Trial)
-//  public void setup() {
-//    PriceTickPool pool = new PriceTickPool(2048);
-//    Queue<MutablePriceTick> queue = new ArrayDeque<>();
-//    calculator = new VwapCalculator(pool, queue);
-//
-//    // Create a realistic PriceTick
-//    MarketDataGenerator gen = new MarketDataGenerator();
-//    tick = new MutablePriceTick();
-//    Parser.parseEntry(gen.generateMarketDataEntryForSymbol(CurrencyPair.AUDUSD), tick);
-//  }
 
   @TearDown(Level.Trial)
   public void tearDown() {
